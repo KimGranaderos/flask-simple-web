@@ -5,6 +5,7 @@ import smtplib
 import os
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///friends.db'
 
 # Initialize the database
@@ -23,6 +24,22 @@ class Friends(db.Model):
 
 
 subscribers = []
+
+
+@app.route('/update/<int:id>', methods=['POST', 'GET'])
+def update(id):
+    update_friend = Friends.query.get_or_404(id)
+
+    if request.method == "POST":
+        update_friend.name = request.form['name']
+
+        try:
+            db.session.commit()
+            return redirect('/friends')
+        except:
+            return "There was a problem updating that friend..."
+    else:
+        return render_template('update.html', update_friend=update_friend)
 
 
 @app.route('/friends', methods=['POST', 'GET'])

@@ -12,7 +12,9 @@
   </form>
   <br><br>
   {% for friend in friends %}
-  <h4> {{ friend.name }} </h4>
+  <h4>
+    <a href="/update/{{ friend.id }}" class="btn btn-outline-secondary btn-sm">Update</a> {{ friend.name }}
+  </h4>
   {% endfor%}
 
 </div>
