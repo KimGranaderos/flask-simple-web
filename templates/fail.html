@@ -4,16 +4,9 @@
 {% endblock %}
 {% block content %}
 <div class="container">
+  <h1>whyError...</h1>
+  {{ error_statement }}
 
-  {% if error_statement %}
-  <div class="alert alert-warning alert-dismissible fade show" role="alert">
-    {{ error_statement }}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  {% endif %}
-  <h1>Subscribe To My Newsletter...</h1>
   <br><br>
 
   <form action="/form" method="POST">
