@@ -13,7 +13,9 @@
   <br><br>
   {% for friend in friends %}
   <h4>
-    <a href="/update/{{ friend.id }}" class="btn btn-outline-secondary btn-sm">Update</a> {{ friend.name }}
+    <a href="/delete/{{ friend.id }}" class="btn btn-outline-danger btn-sm">Delete</a>
+    <a href="/update/{{ friend.id }}" class="btn btn-outline-secondary btn-sm">Update</a>
+    {{ friend.name }}
   </h4>
   {% endfor%}
 
